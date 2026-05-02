@@ -1,0 +1,7 @@
+anthropic>=0.40.0
+psycopg2-binary
+python-dotenv
+streamlit
+folium
+streamlit-folium
+branca
