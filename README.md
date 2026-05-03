@@ -81,6 +81,18 @@ This is useful for testing the SQL output before the full UI is involved.
 
 ---
 
+## Running the eval harness
+
+`eval.py` runs a set of test cases against the SQL generation pipeline. Each case sends a natural language question to Claude and checks that the resulting SQL references the expected tables and PostGIS functions, then executes it against the database and verifies it returns results.
+
+```bash
+python eval.py
+```
+
+This is useful when you change the system prompt, swap models, or add new schema — run the evals first to confirm the existing queries still work. The script exits with code 1 if any case fails.
+
+---
+
 ## What's in the database
 
 | Table           | Contents                                                                               |
@@ -107,6 +119,7 @@ This is useful for testing the SQL output before the full UI is involved.
 ```
 spatial_query.py   Core logic: schema, system prompt, Claude API call, database query
 app.py             Streamlit frontend: UI, table display, map rendering
+eval.py            Eval harness: test cases for SQL generation quality
 requirements.txt   Python dependencies
 .env.example       Template for environment variables
 ```
